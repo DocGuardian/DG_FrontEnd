@@ -20,10 +20,6 @@ export class UserService {
     return this.http.put<HttpResponse>(this.base_url + `/${user.id}`, user);
   }
 
-  public inviteUserByEmail(user: UserReq, id:string): Observable<HttpResponse> {
-    return this.http.post<HttpResponse>(this.base_url, user);
-  }
-
 
   public getPaginitaion(page: number, size: number): Observable<HttpResponse> {
     const params = new HttpParams()
@@ -46,4 +42,9 @@ export class UserService {
   public getInvitations(id: string): Observable<HttpResponse> {
     return this.http.get<HttpResponse>(this.base_url + `/${id}/invitations`);
   }
+
+  public delete(id: string): Observable<HttpResponse> {
+    return this.http.delete<HttpResponse>(this.base_url + `/${id}`);
+  }
+  
 }
