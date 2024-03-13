@@ -8,6 +8,7 @@ import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.co
 import { LoginComponent } from './core/components/auth/login/login.component';
 import { RegisterComponent } from './core/components/auth/register/register.component';
 import { HomeComponent } from './core/components/home/home.component';
+import { AdminLayoutComponent } from './shared/layouts/admin-layout/admin-layout.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeComponent } from './core/components/home/home.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AdminLayoutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
