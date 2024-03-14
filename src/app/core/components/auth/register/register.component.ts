@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { UserReq } from 'src/app/core/models/user.model';
+import { AppState } from 'src/app/core/store/state/app.state';
+import { startRegisterAction } from 'src/app/core/store/users/user.action';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +11,7 @@ import { UserReq } from 'src/app/core/models/user.model';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private builder: FormBuilder) {}
+  constructor(private builder: FormBuilder, private store: Store<AppState>) {}
 
   signUpForm!: FormGroup;
 
@@ -81,7 +84,7 @@ export class RegisterComponent implements OnInit {
           phone: this.signUpForm.value.phone,
         };
         alert('Ready to Submit');
-        //this.store.dispatch(startRegisterAction({ user }));
+        this.store.dispatch(startRegisterAction({ user }));
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }

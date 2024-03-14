@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/core/store/state/app.state';
+import { startLoginAction } from 'src/app/core/store/users/user.action';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,7 @@ export class LoginComponent implements OnInit {
   email_Error = '';
   password_Error = '';
 
-  constructor(private builder: FormBuilder) {}
+  constructor(private builder: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.loginForm = this.builder.group({
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
     if (this.loginForm.valid) {
       alert('Ready to submit');
-      //   this.store.dispatch(startLoginAction({ email, password }));
+      this.store.dispatch(startLoginAction({ email, password }));
     } else {
       if (this.loginForm?.get('email')?.hasError('required')) {
         this.email_Error = 'Email is required.';
