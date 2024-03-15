@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { defer, exhaustMap, map, of, tap } from 'rxjs';
+import { defer, exhaustMap, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,9 @@ import {
 import { UserService } from '../../services/users/user.service';
 import { UserAuthService } from '../../services/users/auth/user-auth.service';
 import { formatUser } from '../../utils/utility';
+import { jwtDecode } from 'jwt-decode';
+import { HttpResponse } from '../../models/httpRes.model';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class UserEffect {
@@ -27,24 +30,37 @@ export class UserEffect {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(startLoginAction),
-      exhaustMap((action) => {
+      mergeMap((action) => {
         let authReq = {
           email: action.email,
           password: action.password,
         };
         return this.userAuthService.login(authReq).pipe(
           map((res) => {
-            console.log('Res Data : ' + JSON.stringify(res.data.response));
+            console.log('Token : ' + JSON.stringify(res.data.token));
             const user = formatUser(res);
-            localStorage.setItem('user', JSON.stringify(user));
-            this.route.navigate(['home']);
+            const token = res.data.token;
+            localStorage.setItem('token', token);
+            const decodedToken = jwtDecode(token);
+            const email = decodedToken.sub as string;
+            console.log(decodedToken.sub);
+
+            this.userService.getByEmail(email).pipe(
+              map((res) => {
+                console.log(
+                  'User By Email : ' + JSON.stringify(res.data.response)
+                );
+                const user = formatUser(res);
+                localStorage.setItem('user', JSON.stringify(user));
+              })
+            ),
+              this.route.navigate(['home']);
             return loginSuccessAction({ user });
           })
         );
       })
     )
   );
-
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(startRegisterAction),

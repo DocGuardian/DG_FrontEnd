@@ -32,8 +32,7 @@ import { UserEffect } from './core/store/users/user.effect';
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([UserEffect]),
-
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [
     // provide: HTTP_INTERCEPTORS,

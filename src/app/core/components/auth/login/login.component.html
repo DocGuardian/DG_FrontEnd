@@ -74,6 +74,7 @@
   
           <div>
             <button
+            [disabled]="loginForm.invalid"
               class="flex w-full justify-center rounded-md bg-gray-900 px-3 py-2.5 text-md font-semibold text-white hover:text-gray-900 hover:bg-white hover:border hover:border-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
             >
               Login
