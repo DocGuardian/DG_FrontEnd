@@ -6,6 +6,11 @@ import { HomeComponent } from './core/components/home/home.component';
 
 const routes: Routes = [
   {
+    path: 'home',
+    component: HomeComponent,
+  },
+
+  {
     path: 'auth',
     //canActivate: [NoAuthGuard],
     children: [
@@ -18,13 +23,7 @@ const routes: Routes = [
         component: RegisterComponent,
       },
     ],
-  },
-
-  {
-    path: 'home',
-    component: HomeComponent,
-    //canActivate: [NoAuthGuard],
-  },
+  }
 ];
 
 @NgModule({

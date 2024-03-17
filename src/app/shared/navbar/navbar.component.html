@@ -1,0 +1,87 @@
+<nav class="px-4 md:px-8 py-6">
+  <div
+    class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto"
+  >
+    <a
+      routerLink="home"
+      class="flex items-center cursor-pointer"
+      aria-label="Home"
+      role="img"
+    >
+      <p class="ml-2 text-lg lg:text-xl text-black gugi-regular">
+        Doc<span class="text-green-500">Guardian</span>
+      </p>
+    </a>
+
+    <div class="flex gap-4 items-center md:order-2">
+      <div class="hidden md:flex gap-4">
+        <a
+          class="poppins-medium inline-block px-6 py-2.5 text-white text-xs leading-tight uppercase rounded shadow-md bg-green-500 hover:bg-white hover:text-green-600 hover:shadow-lg ring-1 ring-green-600 transition duration-150 ease-in-out cursor-pointer"
+          >Try For Free</a
+        >
+        <a
+        routerLink="/auth/login"
+          class="poppins-medium inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-white hover:bg-gray-900 hover:shadow-lg ring-1 ring-green-600 hover:ring-gray-800 transition duration-150 ease-in-out cursor-pointer"
+          >Login</a
+        >
+      </div>
+      <button
+        data-collapse-toggle="mega-menu"
+        type="button"
+        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="mega-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          aria-hidden="true"
+          class="w-6 h-6"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div
+      id="mega-menu"
+      class="items-center justify-between hidden w-full text-sm md:flex md:w-auto md:order-1"
+    >
+      <ul
+        class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0"
+      >
+        <li
+          class="poppins-medium text-gray-600  hover:text-green-500 cursor-pointer py-2"
+        >
+          <a routerLink="/home">How it works</a>
+        </li>
+        <li
+          class="poppins-medium text-gray-600 hover:text-green-500 cursor-pointer py-2"
+        >
+          <a routerLink="/competitions">Features</a>
+        </li>
+
+        <li
+          class="poppins-medium text-gray-600  hover:text-green-500 cursor-pointer py-2"
+        >
+          <a [routerLink]="['/podiums']">Pricing</a>
+        </li>
+        <div class="md:hidden flex gap-4 mb-6 mt-2">
+          <a
+            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
+            >Try for free</a
+          >
+          <a
+            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
+            >Logout</a
+          >
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
