@@ -7,6 +7,8 @@ import { ProfileComponent } from './core/components/user/profile/profile.compone
 import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 
 const routes: Routes = [
+
+
   {
     path: 'auth',
     //canActivate: [NoAuthGuard],

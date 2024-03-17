@@ -17,11 +17,17 @@ import { appReducer } from './core/store/state/app.state';
 import { UserEffect } from './core/store/users/user.effect';
 import { ProfileComponent } from './core/components/user/profile/profile.component';
 import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { HeroComponent } from './shared/hero/hero.component';
+import { HowItWorksComponent } from './shared/how-it-works/how-it-works.component';
+import { MainFeaturesComponent } from './shared/main-features/main-features.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthLayoutComponent,
+    HomeComponent,
+    AdminLayoutComponent,
     MainLayoutComponent,
     LoginComponent,
     RegisterComponent,
@@ -29,6 +35,10 @@ import { AccountSettingsLayoutComponent } from './shared/layouts/account-setting
     AdminLayoutComponent,
     ProfileComponent,
     AccountSettingsLayoutComponent,
+    NavbarComponent,
+    HeroComponent,
+    HowItWorksComponent,
+    MainFeaturesComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,6 @@ import { AccountSettingsLayoutComponent } from './shared/layouts/account-setting
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([UserEffect]),
-
     AppRoutingModule,
   ],
   providers: [
