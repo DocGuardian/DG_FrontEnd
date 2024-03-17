@@ -15,6 +15,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducer } from './core/store/state/app.state';
 import { UserEffect } from './core/store/users/user.effect';
+import { ProfileComponent } from './core/components/user/profile/profile.component';
+import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { UserEffect } from './core/store/users/user.effect';
     RegisterComponent,
     HomeComponent,
     AdminLayoutComponent,
+    ProfileComponent,
+    AccountSettingsLayoutComponent,
   ],
   imports: [
     BrowserModule,
