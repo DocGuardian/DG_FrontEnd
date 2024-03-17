@@ -112,3 +112,22 @@
     font-style: italic;
   }
   
+  /* Modern Browsers */
+.scrollbar::-webkit-scrollbar {
+  width: 1px; /* Adjust width as desired */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: gray; /* Set desired color */
+  border-radius: 6px; /* Add rounded corners */
+}
+
+/* Optional: Internet Explorer Compatibility */
+.scrollbar::-ms-scrollbar {
+  width: 10px;
+}
+
+.scrollbar::-ms-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 6px;
+}

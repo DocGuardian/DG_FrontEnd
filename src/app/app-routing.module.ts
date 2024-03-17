@@ -3,13 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/components/auth/login/login.component';
 import { RegisterComponent } from './core/components/auth/register/register.component';
 import { HomeComponent } from './core/components/home/home.component';
+import { ProfileComponent } from './core/components/user/profile/profile.component';
+import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-
   {
     path: 'auth',
     //canActivate: [NoAuthGuard],
@@ -23,7 +20,30 @@ const routes: Routes = [
         component: RegisterComponent,
       },
     ],
-  }
+  },
+
+
+  {
+    path: 'account-settings',
+    component: AccountSettingsLayoutComponent,
+    //canActivate: [NoAuthGuard],
+    children: [
+      // {
+      //   path: '',
+      //   redirectTo: 'profile',
+      //   pathMatch: 'full',
+      // },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ],
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    //canActivate: [NoAuthGuard],
+  },
 ];
 
 @NgModule({
