@@ -1,10 +1,21 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { defer, exhaustMap, map, mergeMap, of, switchMap, tap } from 'rxjs';
+import {
+  catchError,
+  defer,
+  exhaustMap,
+  map,
+  mergeMap,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
+  extractEmail,
+  extractEmailFailure,
   loginSuccessAction,
   logoutAction,
   registerSuccessAction,
@@ -27,40 +38,67 @@ export class UserEffect {
     private route: Router
   ) {}
 
-  login$ = createEffect(() =>
+  extractEmail$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(startLoginAction),
-      mergeMap((action) => {
-        let authReq = {
-          email: action.email,
-          password: action.password,
-        };
-        return this.userAuthService.login(authReq).pipe(
+      ofType(extractEmail),
+      switchMap(({ token }) => {
+        console.log('Switch Token : ', token);
+        const decodedToken = jwtDecode(token);
+        const email = decodedToken.sub as string;
+        return this.userService.getByEmail(email).pipe(
           map((res) => {
-            console.log('Token : ' + JSON.stringify(res.data.token));
+            // Dispatch success action with extracted email
             const user = formatUser(res);
-            const token = res.data.token;
-            localStorage.setItem('token', token);
-            const decodedToken = jwtDecode(token);
-            const email = decodedToken.sub as string;
-            console.log(decodedToken.sub);
-
-            this.userService.getByEmail(email).pipe(
-              map((res) => {
-                console.log(
-                  'User By Email : ' + JSON.stringify(res.data.response)
-                );
-                const user = formatUser(res);
-                localStorage.setItem('user', JSON.stringify(user));
-              })
-            ),
-              this.route.navigate(['home']);
             return loginSuccessAction({ user });
+          }),
+          catchError((error) => {
+            // Dispatch failure action if extraction fails
+            console.error('1- Err : ', error);
+            return of(extractEmailFailure({ error }));
           })
         );
       })
     )
   );
+
+  login$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(startLoginAction),
+      switchMap((action) => {
+        let authReq = {
+          email: action.email,
+          password: action.password,
+        };
+
+        return this.userAuthService.login(authReq).pipe(
+          map((res) => {
+            const token = res.data.token;
+            localStorage.setItem('token', token);
+            console.log('Token : ', token);
+
+            //const user = formatUser(res);
+
+            // const decodedToken = jwtDecode(token);
+            // const email = decodedToken.sub as string;
+            // console.log(decodedToken.sub);
+
+            // this.userService.getByEmail(email).pipe(
+            //   map((res) => {
+            //     console.log(
+            //       'User By Email : ' + JSON.stringify(res.data.response)
+            //     );
+            //     const user = formatUser(res);
+            //     localStorage.setItem('user', JSON.stringify(user));
+            //   })
+            // ),
+            this.route.navigate(['home']);
+            return extractEmail({ token });
+          })
+        );
+      })
+    )
+  );
+
   register$ = createEffect(() =>
     this.actions$.pipe(
       ofType(startRegisterAction),

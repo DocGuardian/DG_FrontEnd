@@ -17,11 +17,27 @@ export const startLoginAction = createAction(
   props<{ email: string; password: string }>()
 );
 
-export const logoutAction = createAction(USER_LOGOUT);
+export const extractEmail = createAction(
+  '[auth/user] Extract Email',
+  props<{ token: string }>()
+);
+
+export const extractEmailSuccess = createAction(
+  '[auth/user] Extract Email Success',
+  props<{ email: string }>()
+);
+
+export const extractEmailFailure = createAction(
+  '[auth/user] Extract Email Failure',
+  props<{ error: any }>()
+);
+
 export const loginSuccessAction = createAction(
   USER_LOGIN_SUCCESS,
   props<{ user: User }>()
 );
+
+export const logoutAction = createAction(USER_LOGOUT);
 
 //  SIGN UP
 export const startRegisterAction = createAction(

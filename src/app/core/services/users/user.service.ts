@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '../../models/httpRes.model';
 import { User, UserReq } from '../../models/user.model';
@@ -40,9 +40,13 @@ export class UserService {
 
   public getByEmail(email: string): Observable<HttpResponse> {
     const params = new HttpParams().set('email', email);
+    const token = localStorage.getItem('token') as string;
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
 
     return this.http.get<HttpResponse>(`${this.base_url}/search-by`, {
       params,
+      headers
     });
   }
 
