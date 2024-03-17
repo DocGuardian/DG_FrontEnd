@@ -1,1 +1,65 @@
-<p>profile works!</p>
+<main class="flex flex-col space-y-6 scrollbar">
+  <div class="p-2">
+    <p class="poppins-medium text-xl">My Profile</p>
+  </div>
+
+  <!-- Image -->
+  <section class="flex flex-col w-full">
+    <div
+      class="flex flex-col gap-6 rounded-md border border-gray-200 p-4 md:flex-row justify-between"
+    >
+      <div class="flex flex-col gap-6 md:flex-row">
+        <img
+          src="./assets/aziz.jpeg"
+          alt=""
+          class="h-20 w-20 self-center rounded-full border-2 border-green-600 object-fit"
+        />
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <h3 class="text-gray-900 poppins-medium">Aziz Harakati</h3>
+          <h3 class="text-gray-400 poppins-regular text-sm">
+            Casablanca, Morocco
+          </h3>
+        </div>
+      </div>
+      <a
+        class="inline-block self-center poppins-regular px-5 p-1.5 border border-green-200 rounded-full cursor-pointer"
+      >
+        <span class="text-green-800">Edit</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Personal Information -->
+  <section class="flex flex-col w-full">
+    <div class="flex flex-col gap-6 rounded-md border border-gray-200 p-4">
+      <div class="p-2 w-full flex justify-between">
+        <p class="poppins-medium">Personal Information</p>
+        <a
+          class="self-center poppins-regular px-5 p-1.5 border border-green-200 rounded-full cursor-pointer"
+        >
+          <span class="text-green-800">Edit</span>
+        </a>
+      </div>
+
+      <div class="p-2 grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <p class="text-gray-400 poppins-regular">First Name</p>
+          <p class="text-gray-900 poppins-medium">Aziz</p>
+        </div>
+
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <p class="text-gray-400 poppins-regular">Last Name</p>
+          <p class="text-gray-900 poppins-medium">Harakati</p>
+        </div>
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <p class="text-gray-400 poppins-regular">Email address</p>
+          <p class="text-gray-900 poppins-medium">Aziz@gmail.com</p>
+        </div>
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <p class="text-gray-400 poppins-regular">Phone</p>
+          <p class="text-gray-900 poppins-medium">+212644895014</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

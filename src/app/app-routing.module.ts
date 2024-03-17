@@ -7,8 +7,6 @@ import { ProfileComponent } from './core/components/user/profile/profile.compone
 import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 
 const routes: Routes = [
-
-
   {
     path: 'auth',
     //canActivate: [NoAuthGuard],
@@ -24,14 +22,26 @@ const routes: Routes = [
     ],
   },
 
-  {
-    path: 'home',
-    component: HomeComponent,
-    //canActivate: [NoAuthGuard],
-  },
+
   {
     path: 'account-settings',
     component: AccountSettingsLayoutComponent,
+    //canActivate: [NoAuthGuard],
+    children: [
+      // {
+      //   path: '',
+      //   redirectTo: 'profile',
+      //   pathMatch: 'full',
+      // },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ],
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
     //canActivate: [NoAuthGuard],
   },
 ];

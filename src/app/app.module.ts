@@ -26,6 +26,7 @@ import { MainFeaturesComponent } from './shared/main-features/main-features.comp
   declarations: [
     AppComponent,
     AuthLayoutComponent,
+    AccountSettingsLayoutComponent,
     HomeComponent,
     AdminLayoutComponent,
     MainLayoutComponent,
@@ -34,7 +35,7 @@ import { MainFeaturesComponent } from './shared/main-features/main-features.comp
     HomeComponent,
     AdminLayoutComponent,
     ProfileComponent,
-    AccountSettingsLayoutComponent,
+
     NavbarComponent,
     HeroComponent,
     HowItWorksComponent,

@@ -1,73 +1,80 @@
-<div
-  class="w-full min-h-screen font-sans text-gray-900 bg-black/90 flex overflow-hidden"
->
-  <div class="fixed left-0 w-full">
-    
+<div class="w-full min-h-screen font-sans text-gray-900 flex flex-col fixed">
+  <div class="w-full">
+    <navbar></navbar>
   </div>
-  <aside
-    class="hidden py-2 w-48 shadow-sm bg-black fixed left-0 min-h-screen mt-14 md:block"
-  >
-    <div class="p-4 overflow-y-auto rounded">
-      <ul class="space-y-4">
-        <li
-          class="p-0.2 rounded"
-          routerLinkActive="bg-gradient-to-r from-green-600 via-green-700 to-green-800 "
-        >
-          <a
-            routerLink="competitions"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded hover:shadow-lg ring-1 ring-green-600 hover:bg-gray-900"
-          >
-            <span class="ml-1 text-white">Competitions</span>
-          </a>
-        </li>
-        <li
-          routerLinkActive="bg-gradient-to-r from-green-600 via-green-700 to-green-800 "
-          class="p-0.2 rounded"
-        >
-          <a
-            routerLinkActive="bg-gradient-to-r from-green-600 via-green-700 to-green-800 "
-            routerLink="podiums"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded hover:shadow-lg ring-1 ring-green-600 hover:bg-gray-900"
-          >
-            <span class="ml-1 text-white">Podiums</span>
-          </a>
-        </li>
-        <li
-          class="p-0.2 rounded"
-          routerLinkActive="bg-gradient-to-r from-green-600 via-green-700 to-green-800 "
-        >
-          <a
-            routerLink="members"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded hover:shadow-lg ring-1 ring-green-600 hover:bg-gray-900"
-          >
-            <span class="ml-1 text-white">Members</span>
-          </a>
-        </li>
-
-        <li
-          class="p-0.2 rounded"
-          routerLinkActive="bg-gradient-to-r from-green-600 via-green-700 to-green-800 "
-        >
-          <a
-            routerLink="fishes"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded hover:shadow-lg ring-1 ring-green-600 hover:bg-gray-900"
-          >
-            <span class="ml-1 text-white">Fishes</span>
-          </a>
-        </li>
-
-        <li class="p-0.2 rounded">
-          <a
-            routerLink="/levels"
-            class="flex items-center p-2 text-base font-medium text-gray-900 rounded hover:shadow-lg ring-1 ring-green-600 hover:bg-gray-900"
-          >
-            <span class="ml-1 text-white">Levels</span>
-          </a>
-        </li>
-      </ul>
+  <div class="w-full h-[90vh] bg-gray-50 text-gray-900 flex flex-col p-6">
+    <div class="pb-6">
+      <p class="poppins-medium text-xl">Account Settings</p>
     </div>
-  </aside>
-  <main class="md:ml-48 flex-1 py-6 w-full h-full">
-    <router-outlet></router-outlet>
-  </main>
+    <section
+      class="flex w-full h-full rounded-lg bg-white shadow-sm border border-green-50 overflow-hidden"
+    >
+      <aside class="py-2 w-48 h-full border-r border-green-100">
+        <div class="p-4 overflow-y-auto rounded">
+          <ul class="space-y-3">
+            <li
+              class="inline-flex px-2 rounded-full  hover:shadow-lg"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 "
+            >
+              <a
+                routerLink="/account-settings"
+                class="inline-flex poppins-medium px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span class="text-green-800">My Profile</span>
+              </a>
+            </li>
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+            >
+              <a
+                routerLink="competitions"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span class="text-gray-800">Security</span>
+              </a>
+            </li>
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+            >
+              <a
+                routerLink="competitions"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span class="text-gray-800">Projects</span>
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+            >
+              <a
+                routerLink="competitions"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span class="text-gray-800">Rooms</span>
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+            >
+              <a
+                routerLink="competitions"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span class="text-red-500">Delete Account</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <main class="flex-1 p-6 w-full h-full overflow-y-auto scrollbar">
+        <router-outlet></router-outlet>
+      </main>
+    </section>
+  </div>
 </div>
