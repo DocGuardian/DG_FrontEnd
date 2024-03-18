@@ -1,14 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import {
-  catchError,
-  defer,
-  exhaustMap,
-  map,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { catchError, defer, exhaustMap, map, of, switchMap, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -70,7 +62,7 @@ export class UserEffect {
             const token = res.data.token;
             localStorage.setItem('token', token);
             console.log('Token : ', token);
-            this.route.navigate(['account-settings/profile']);
+            this.route.navigate(['dg/profile']);
             return extractEmail({ token });
           })
         );

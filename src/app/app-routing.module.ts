@@ -6,6 +6,7 @@ import { HomeComponent } from './core/components/home/home.component';
 import { ProfileComponent } from './core/components/user/profile/profile.component';
 import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
+import { DocumentsComponent } from './core/components/user/documents/documents.component';
 
 const routes: Routes = [
   {
@@ -50,7 +51,6 @@ const routes: Routes = [
     component: GetStartedComponent,
     //canActivate: [NoAuthGuard],
     children: [
-      
       {
         path: '',
         redirectTo: 'profile',
@@ -60,9 +60,12 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
       },
+      {
+        path: 'documents',
+        component: DocumentsComponent,
+      },
     ],
   },
-  
 ];
 
 @NgModule({

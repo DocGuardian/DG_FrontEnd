@@ -22,6 +22,10 @@ import { HeroComponent } from './shared/hero/hero.component';
 import { HowItWorksComponent } from './shared/how-it-works/how-it-works.component';
 import { MainFeaturesComponent } from './shared/main-features/main-features.component';
 import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
+import { DocumentsComponent } from './core/components/user/documents/documents.component';
+import { ProjectsComponent } from './core/components/user/projects/projects.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { DocsTableComponent } from './shared/docs-table/docs-table.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { GetStartedComponent } from './shared/layouts/get-started/get-started.co
     HowItWorksComponent,
     MainFeaturesComponent,
     GetStartedComponent,
+    DocumentsComponent,
+    ProjectsComponent,
+    FooterComponent,
+    DocsTableComponent,
   ],
   imports: [
     BrowserModule,

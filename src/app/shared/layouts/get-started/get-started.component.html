@@ -1,6 +1,6 @@
 <div class="w-full h-screen font-sans text-gray-900 flex flex-col fixed">
   <!-- Navbar -->
- <navbar></navbar>
+  <navbar></navbar>
 
   <!--  -->
   <div class="w-full h-full bg-gray-50 text-gray-900 flex flex-col">
@@ -13,26 +13,34 @@
         >
           <ul class="space-y-3">
             <li
-              class="inline-flex px-2 rounded-full hover:shadow-lg"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 "
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-md"
             >
               <a
                 routerLink="/dg/profile"
-                class="inline-flex poppins-medium px-2 flex items-center p-2 text-base rounded-full"
+                class="inline-flex px-2 flex items-center p-2  rounded-full"
               >
-                <span class="text-green-800">My Profile</span>
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-800"
+                  >My Profile</span
+                >
               </a>
             </li>
 
             <li
               class="inline-flex px-2 rounded-full"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-md "
             >
               <a
-                routerLink="competitions"
-                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+                routerLink="/dg/documents"
+                class="inline-flex px-2 flex items-center p-2  rounded-full"
               >
-                <span class="text-gray-800">Projects</span>
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-800"
+                  >Documents</span
+                >
               </a>
             </li>
 
@@ -65,7 +73,7 @@
               routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
             >
               <button
-                
+              (click)="logout()"
                 class="flex space-x-4 px-2 flex items-center p-2 text-base rounded-full"
               >
                 <svg
