@@ -3,28 +3,120 @@
     class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto"
   >
     <a
-      routerLink="home"
+      routerLink="/home"
       class="flex items-center cursor-pointer"
       aria-label="Home"
-      role="img"
+      role="logo"
     >
       <p class="ml-2 text-lg lg:text-xl text-black gugi-regular">
         Doc<span class="text-green-500">Guardian</span>
       </p>
     </a>
 
-    <div class="flex gap-4 items-center md:order-2">
-      <div class="hidden md:flex gap-4">
-        <a
-          class="poppins-medium inline-block px-6 py-2.5 text-white text-xs leading-tight uppercase rounded shadow-md bg-green-500 hover:bg-white hover:text-green-600 hover:shadow-lg ring-1 ring-green-600 transition duration-150 ease-in-out cursor-pointer"
-          >Try For Free</a
+    <!-- MD -->
+    <div
+      id="mega-menu"
+      class="items-center justify-center hidden text-sm md:flex"
+    >
+      <ul
+        *ngIf="user"
+        class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0"
+      >
+        <input
+          placeholder="Search"
+          type="text"
+          name="search"
+          class="hidden poppins-regular w-80 px-3 py-1.5 text-gray-600 placeholder-gray-400 bg-white border border-gray-300 rounded focus:border-green-400 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-40 md:block"
+        />
+
+        <div class="flex gap-4">
+          <!-- notification -->
+          <div class="relative rounded">
+            <span
+              v-show="notifications.length"
+              class="poppins-regular absolute -top-2 left-4 inline-flex items-center justify-center text-white font-medium rounded-full px-2.5 py-1 bg-red-500 text-xs"
+            >
+              1</span
+            >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-7 h-7 fill-green-300 text-green-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+              />
+            </svg>
+          </div>
+        </div>
+        <li class="min-w-max">
+          <a
+            routerLink="dg/profile"
+            aria-label="profile"
+            class="flex items-center px-1 text-white"
+          >
+            <div class="flex items-center justify-center">
+              <img
+                class="w-10 h-10 mx-auto rounded-full border-2 border-green-100 hover:border-green-500"
+                src="./assets/aziz.jpeg"
+                alt=""
+              />
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul
+        *ngIf="!user"
+        class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0"
+      >
+        <li
+          class="poppins-medium text-gray-600 hover:text-green-500 cursor-pointer py-2"
         >
-        <a
+          <a routerLink="/home">How it works</a>
+        </li>
+        <li
+          class="poppins-medium text-gray-600 hover:text-green-500 cursor-pointer py-2"
+        >
+          <a routerLink="/competitions">Features</a>
+        </li>
+
+        <li
+          class="poppins-medium text-gray-600 hover:text-green-500 cursor-pointer py-2"
+        >
+          <a [routerLink]="['/podiums']">Pricing</a>
+        </li>
+        <div class="md:hidden flex gap-4 mb-6 mt-2">
+          <a
+            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
+            >Try for free</a
+          >
+          <a
+            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
+            >Logout</a
+          >
+        </div>
+      </ul>
+    </div>
+
+    <div *ngIf="!user" class="hidden md:flex gap-4">
+      <a
+        class="poppins-medium inline-block px-6 py-2.5 text-white text-xs leading-tight uppercase rounded shadow-md bg-green-500 hover:bg-white hover:text-green-600 hover:shadow-lg ring-1 ring-green-600 transition duration-150 ease-in-out cursor-pointer"
+        >Try For Free</a
+      >
+      <a
         routerLink="/auth/login"
-          class="poppins-medium inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-white hover:bg-gray-900 hover:shadow-lg ring-1 ring-green-600 hover:ring-gray-800 transition duration-150 ease-in-out cursor-pointer"
-          >Login</a
-        >
-      </div>
+        class="poppins-medium inline-block px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded shadow-md hover:text-white hover:bg-gray-900 hover:shadow-lg ring-1 ring-green-600 hover:ring-gray-800 transition duration-150 ease-in-out cursor-pointer"
+        >Login</a
+      >
+    </div>
+
+    <div class="block md:hidden">
       <button
         data-collapse-toggle="mega-menu"
         type="button"
@@ -47,41 +139,6 @@
           ></path>
         </svg>
       </button>
-    </div>
-    <div
-      id="mega-menu"
-      class="items-center justify-between hidden w-full text-sm md:flex md:w-auto md:order-1"
-    >
-      <ul
-        class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0"
-      >
-        <li
-          class="poppins-medium text-gray-600  hover:text-green-500 cursor-pointer py-2"
-        >
-          <a routerLink="/home">How it works</a>
-        </li>
-        <li
-          class="poppins-medium text-gray-600 hover:text-green-500 cursor-pointer py-2"
-        >
-          <a routerLink="/competitions">Features</a>
-        </li>
-
-        <li
-          class="poppins-medium text-gray-600  hover:text-green-500 cursor-pointer py-2"
-        >
-          <a [routerLink]="['/podiums']">Pricing</a>
-        </li>
-        <div class="md:hidden flex gap-4 mb-6 mt-2">
-          <a
-            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
-            >Try for free</a
-          >
-          <a
-            class="poppins-medium inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"
-            >Logout</a
-          >
-        </div>
-      </ul>
     </div>
   </div>
 </nav>

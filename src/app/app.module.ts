@@ -21,6 +21,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HeroComponent } from './shared/hero/hero.component';
 import { HowItWorksComponent } from './shared/how-it-works/how-it-works.component';
 import { MainFeaturesComponent } from './shared/main-features/main-features.component';
+import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MainFeaturesComponent } from './shared/main-features/main-features.comp
     HeroComponent,
     HowItWorksComponent,
     MainFeaturesComponent,
+    GetStartedComponent,
   ],
   imports: [
     BrowserModule,

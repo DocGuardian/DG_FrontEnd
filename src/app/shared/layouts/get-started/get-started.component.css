@@ -1,3 +1,4 @@
+
 .gugi-regular {
     font-family: "Gugi", sans-serif;
     font-weight: 400;
@@ -112,4 +113,23 @@
     font-style: italic;
   }
   
- 
+   
+  /* Modern Browsers */
+.scrollbar::-webkit-scrollbar {
+    width: 8px; /* Adjust width as desired */
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(6, 210, 6); /* Set desired color */
+    border-radius: 1px; /* Add rounded corners */
+  }
+  
+  /* Optional: Internet Explorer Compatibility */
+  .scrollbar::-ms-scrollbar {
+    width: 1px;
+  }
+  
+  .scrollbar::-ms-scrollbar-thumb {
+    background-color: rgb(6, 210, 6);
+    border-radius: 1px;
+  }
