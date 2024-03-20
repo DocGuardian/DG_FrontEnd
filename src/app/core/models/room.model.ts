@@ -7,6 +7,7 @@ export interface Room {
   name: string;
   storage: number;
   type: RoomType;
+  users: Array<User>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -14,7 +15,6 @@ export interface Room {
 export interface RoomReq {
   owner: User;
   name: string;
-  storage: number;
   type: RoomType;
 }
 

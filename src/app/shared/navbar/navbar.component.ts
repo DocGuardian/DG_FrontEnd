@@ -11,9 +11,9 @@ import { AppState } from 'src/app/core/store/state/app.state';
 export class NavbarComponent implements OnInit{
 
   user?: User;
-  constructor(private _store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {}
   ngOnInit(): void {
-    this._store.select('userAuth').subscribe((state) => {
+    this.store.select('userAuth').subscribe((state) => {
       this.user = state.user;
     });
   }

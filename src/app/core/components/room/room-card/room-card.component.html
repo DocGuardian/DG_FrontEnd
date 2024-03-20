@@ -1,0 +1,48 @@
+<div class="p-4 space-y-4 bg-white border border-gray-300 rounded">
+  <div class="flex gap-4">
+    <a
+      routerLink="/dg/profile"
+      aria-label="profile"
+      class="flex items-center px-1 text-white"
+    >
+      <div class="flex items-center justify-center">
+        <img
+          class="w-10 h-10 mx-auto rounded-full border-2 border-green-400"
+          [src]="room.owner.imageUrl ?? './assets/person.png' " 
+          alt=""
+        />
+      </div>
+    </a>
+    <div class="flex flex-col">
+      <span class="poppins-medium text-sm"> {{room.owner.first_name}} {{room.owner.last_name}}</span>
+      <span class="poppins-regular text-gray-500 text-xs">Owner</span>
+    </div>
+  </div>
+
+  <div>
+    <p class="poppins-medium">{{room.name}}</p>
+    <p class="poppins-regular text-gray-400 text-sm">{{room.users.length}} Participants</p>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <a [routerLink]="['/dg/rooms/', room.id]">
+      <p class="poppins-medium text-sm text-green-500 cursor-pointer">
+        See Room
+      </p>
+    </a>
+    <div class="flex items-center space-x-2">
+      <img
+      *ngFor="let user of room.users"
+        class="w-8 h-8 rounded-full object-cover bg-gray-200"
+        [src]="user.imageUrl ?? './assets/person.png' " 
+      />
+    
+      <div
+      *ngIf="room.users.length > 3"
+        class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center poppins-regular text-sm"
+      >
+        + {{room.users.length - 3}}
+      </div>
+    </div>
+  </div>
+</div>

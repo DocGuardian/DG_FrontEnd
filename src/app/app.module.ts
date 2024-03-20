@@ -26,6 +26,9 @@ import { DocumentsComponent } from './core/components/user/documents/documents.c
 import { ProjectsComponent } from './core/components/user/projects/projects.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DocsTableComponent } from './shared/docs-table/docs-table.component';
+import { RoomsComponent } from './core/components/room/rooms/rooms.component';
+import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
+import { RoomCardComponent } from './core/components/room/room-card/room-card.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { DocsTableComponent } from './shared/docs-table/docs-table.component';
     ProjectsComponent,
     FooterComponent,
     DocsTableComponent,
+    RoomsComponent,
+    RoomDetailsComponent,
+    RoomCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,7 @@ import { DocsTableComponent } from './shared/docs-table/docs-table.component';
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([UserEffect]),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     // provide: HTTP_INTERCEPTORS,

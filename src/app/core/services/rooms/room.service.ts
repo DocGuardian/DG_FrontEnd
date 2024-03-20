@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Room, RoomReq } from '../../models/room.model';
 import { Observable } from 'rxjs';
@@ -17,33 +17,53 @@ export class RoomService {
   constructor(private http: HttpClient) {}
 
   public save(room: RoomReq): Observable<HttpResponse> {
-    return this.http.post<HttpResponse>(this.base_url, room);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.post<HttpResponse>(this.base_url, room, { headers });
   }
 
   public update(room: Room): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
     return this.http.put<HttpResponse>(this.base_url + `/${room.id}`, room);
   }
 
   public getPaginitaion(page: number, size: number): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
 
     return this.http.get<HttpResponse>(this.base_url + '/pages', {
       params,
+      headers,
     });
   }
 
   public getAll(): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(this.base_url);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url, { headers });
   }
 
   public get(id: string): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(this.base_url + `/${id}`);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url + `/${id}`, { headers });
   }
 
   public delete(id: string): Observable<HttpResponse> {
-    return this.http.delete<HttpResponse>(this.base_url + `/${id}`);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.delete<HttpResponse>(this.base_url + `/${id}`, {
+      headers,
+    });
   }
 
   public inviteUserByEmail(
@@ -55,9 +75,13 @@ export class RoomService {
       userId: userId,
       email: email,
     };
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
     return this.http.post<HttpResponse>(
       this.base_url + `/${roomId}/invite-by-email`,
-      roomInvByEmail
+      roomInvByEmail,
+      { headers }
     );
   }
 
@@ -66,13 +90,18 @@ export class RoomService {
     recipientId: string,
     roomId: string
   ): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
     let roomInv: RoomInvite = {
       senderId: senderId,
       recipientId: recipientId,
     };
+
     return this.http.post<HttpResponse>(
       this.base_url + `/${roomId}/invite`,
-      roomInv
+      roomInv,
+      { headers }
     );
   }
 }

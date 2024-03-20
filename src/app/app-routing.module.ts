@@ -7,6 +7,8 @@ import { ProfileComponent } from './core/components/user/profile/profile.compone
 import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
 import { DocumentsComponent } from './core/components/user/documents/documents.component';
+import { RoomsComponent } from './core/components/room/rooms/rooms.component';
+import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
 
 const routes: Routes = [
   {
@@ -64,7 +66,16 @@ const routes: Routes = [
         path: 'documents',
         component: DocumentsComponent,
       },
+      {
+        path: 'rooms',
+        component: RoomsComponent,
+      },
     ],
+  },
+
+  {
+    path: 'dg/rooms/:roomId',
+    component: RoomDetailsComponent,
   },
 ];
 

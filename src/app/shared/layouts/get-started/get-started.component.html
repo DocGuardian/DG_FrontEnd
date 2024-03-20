@@ -5,7 +5,7 @@
   <!--  -->
   <div class="w-full h-full bg-gray-50 text-gray-900 flex flex-col">
     <section
-      class="flex w-full h-full rounded-lg bg-white shadow-sm border border-green-50 overflow-hidden"
+      class="flex w-full h-full bg-white shadow-sm border border-green-50 overflow-hidden"
     >
       <aside class="py-2 w-48 h-full border-r border-green-100">
         <div
@@ -14,15 +14,15 @@
           <ul class="space-y-3">
             <li
               class="inline-flex px-2 rounded-full"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-md"
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-md"
             >
               <a
                 routerLink="/dg/profile"
-                class="inline-flex px-2 flex items-center p-2  rounded-full"
+                class="inline-flex px-2 flex items-center p-2 rounded-full"
               >
                 <span
                   routerLinkActive="text-green-800 poppins-medium"
-                  class="poppins-regular text-gray-800 hover:text-green-800"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
                   >My Profile</span
                 >
               </a>
@@ -30,15 +30,15 @@
 
             <li
               class="inline-flex px-2 rounded-full"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-md "
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-md "
             >
               <a
                 routerLink="/dg/documents"
-                class="inline-flex px-2 flex items-center p-2  rounded-full"
+                class="inline-flex px-2 flex items-center p-2 rounded-full"
               >
                 <span
                   routerLinkActive="text-green-800 poppins-medium"
-                  class="poppins-regular text-gray-800 hover:text-green-800"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
                   >Documents</span
                 >
               </a>
@@ -46,25 +46,33 @@
 
             <li
               class="inline-flex px-2 rounded-full"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-lg "
             >
               <a
-                routerLink="competitions"
+                routerLink="/dg/rooms"
                 class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
               >
-                <span class="text-gray-800">Rooms</span>
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >Rooms</span
+                >
               </a>
             </li>
 
             <li
               class="inline-flex px-2 rounded-full"
-              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-lg "
             >
               <a
                 routerLink="security"
                 class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
               >
-                <span class="text-gray-800">Security</span>
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >Security</span
+                >
               </a>
             </li>
 
@@ -73,7 +81,7 @@
               routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
             >
               <button
-              (click)="logout()"
+                (click)="logout()"
                 class="flex space-x-4 px-2 flex items-center p-2 text-base rounded-full"
               >
                 <svg
