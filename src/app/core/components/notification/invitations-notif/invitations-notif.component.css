@@ -111,27 +111,3 @@
   font-weight: 900;
   font-style: italic;
 }
-
-.scrollbar::-webkit-scrollbar {
-
-  width: 6px; /* Adjust width as desired */
-}
-
-.scrollbarHidden::-webkit-scrollbar {
-  display: none;
-  width: 0px; /* Adjust width as desired */
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgb(6, 210, 6); /* Set desired color */
-  border-radius: 1px; /* Add rounded corners */
-}
-
-/* Optional: Internet Explorer Compatibility */
-.scrollbar::-ms-scrollbar {
-  width: 1px;
-}
-
-.scrollbar::-ms-scrollbar-thumb {
-  background-color: rgb(6, 210, 6);
-  border-radius: 1px;
-}

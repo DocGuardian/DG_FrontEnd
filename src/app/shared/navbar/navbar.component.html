@@ -29,14 +29,14 @@
           class="hidden poppins-regular w-80 px-3 py-1.5 text-gray-600 placeholder-gray-400 bg-white border border-gray-300 rounded focus:border-green-400 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-40 md:block"
         />
 
-        <div class="flex gap-4">
+        <a routerLink="/notifications" class="flex gap-4">
           <!-- notification -->
           <div class="relative rounded">
             <span
-              v-show="notifications.length"
+              *ngIf="notifications.length"
               class="poppins-regular absolute -top-2 left-4 inline-flex items-center justify-center text-white font-medium rounded-full px-2.5 py-1 bg-red-500 text-xs"
             >
-              1</span
+              {{ notifications.length }}</span
             >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,8 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-7 h-7 fill-green-300 text-green-500"
+              routerLinkActive="fill-green-300 text-green-500"
+              class="w-7 h-7"
             >
               <path
                 stroke-linecap="round"
@@ -53,7 +54,8 @@
               />
             </svg>
           </div>
-        </div>
+        </a>
+
         <li class="min-w-max">
           <a
             routerLink="/dg/profile"
@@ -63,7 +65,7 @@
             <div class="flex items-center justify-center">
               <img
                 class="w-10 h-10 mx-auto rounded-full border-2 border-green-100 hover:border-green-500"
-                [src]="user.imageUrl ?? './assets/person.png' " 
+                [src]="user.imageUrl ?? './assets/person.png'"
                 alt=""
               />
             </div>

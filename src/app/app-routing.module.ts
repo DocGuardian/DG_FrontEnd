@@ -4,7 +4,6 @@ import { LoginComponent } from './core/components/auth/login/login.component';
 import { RegisterComponent } from './core/components/auth/register/register.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { ProfileComponent } from './core/components/user/profile/profile.component';
-import { AccountSettingsLayoutComponent } from './shared/layouts/account-settings-layout/account-settings-layout.component';
 import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
 import { DocumentsComponent } from './core/components/user/documents/documents.component';
 import { RoomsComponent } from './core/components/room/rooms/rooms.component';
@@ -13,6 +12,10 @@ import { AlreadyAuthGuard } from './core/guards/user/already-auth.guard';
 import { AuthGuard } from './core/guards/user/auth.guard';
 import { AccountNotActivatedComponent } from './core/components/account/account-not-activated/account-not-activated.component';
 import { AccountVerificationGuard } from './core/guards/user/account-verification.guard';
+import { NotificationsComponent } from './core/components/notification/notifications/notifications.component';
+import { NotificationLayoutComponent } from './shared/layouts/notification-layout/notification-layout.component';
+import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
+import { MessageNotifComponent } from './core/components/notification/message-notif/message-notif.component';
 
 const routes: Routes = [
   {
@@ -69,6 +72,31 @@ const routes: Routes = [
   {
     path: 'dg/rooms/:roomId',
     component: RoomDetailsComponent,
+  },
+
+  {
+    path: 'notifications',
+    component: NotificationLayoutComponent,
+    //canActivate: [NoAuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'all',
+        pathMatch: 'full',
+      },
+      {
+        path: 'all',
+        component: NotificationsComponent,
+      },
+      {
+        path: 'messages',
+        component: MessageNotifComponent,
+      },
+      {
+        path: 'invitations',
+        component: InvitationsNotifComponent,
+      },
+    ],
   },
 ];
 

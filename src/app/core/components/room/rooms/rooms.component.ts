@@ -33,14 +33,19 @@ export class RoomsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.currentPage = params['page'] || 1;
-      this.size = params['size'] || 5;
-      this.getRoomPages(this.currentPage - 1, this.size);
-    });
     this.store.select('userAuth').subscribe((state) => {
       this.user = state.user;
+      this.route.queryParams.subscribe((params) => {
+        this.currentPage = params['page'] || 1;
+        this.size = params['size'] || 5;
+        this.getRoomPages(
+          this.currentPage - 1,
+          this.size,
+          this.user?.id as string
+        );
+      });
     });
+
     this.roomForm = this.fb.group({
       name: this.fb.control('', [
         Validators.required,
@@ -49,8 +54,8 @@ export class RoomsComponent implements OnInit {
     });
   }
 
-  getRoomPages(page: number, size: number) {
-    this.service.getPaginitaion(page, size).subscribe({
+  getRoomPages(page: number, size: number, userId: string) {
+    this.service.getPaginitaionByUser(page, size, userId).subscribe({
       next: (res) => {
         this.rooms = res.data.response;
         console.info(' Room Pages : ', this.rooms);
@@ -64,10 +69,7 @@ export class RoomsComponent implements OnInit {
   }
 
   getTotalPagesArray(list: PageRooms): number[] {
-    return Array.from(
-      { length: list.totalPages },
-      (_, index) => index + 1
-    );
+    return Array.from({ length: list.totalPages }, (_, index) => index + 1);
   }
 
   goToPage(page: number): void {

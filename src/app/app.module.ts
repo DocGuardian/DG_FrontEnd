@@ -31,6 +31,13 @@ import { RoomDetailsComponent } from './core/components/room/room-details/room-d
 import { RoomCardComponent } from './core/components/room/room-card/room-card.component';
 import { TokenInterceptor } from './core/interceptors/jwt/token.interceptor';
 import { AccountNotActivatedComponent } from './core/components/account/account-not-activated/account-not-activated.component';
+import { NotificationsComponent } from './core/components/notification/notifications/notifications.component';
+import { NotificationCardComponent } from './core/components/notification/notification-card/notification-card.component';
+import { NotificationLayoutComponent } from './shared/layouts/notification-layout/notification-layout.component';
+import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
+import { InvsNotifCardComponent } from './core/components/notification/invs-notif-card/invs-notif-card.component';
+import { MgsNotifCardComponent } from './core/components/notification/mgs-notif-card/mgs-notif-card.component';
+import { MessageNotifComponent } from './core/components/notification/message-notif/message-notif.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +66,13 @@ import { AccountNotActivatedComponent } from './core/components/account/account-
     RoomDetailsComponent,
     RoomCardComponent,
     AccountNotActivatedComponent,
+    NotificationsComponent,
+    NotificationCardComponent,
+    NotificationLayoutComponent,
+    InvitationsNotifComponent,
+    InvsNotifCardComponent,
+    MgsNotifCardComponent,
+    MessageNotifComponent,
   ],
   imports: [
     BrowserModule,

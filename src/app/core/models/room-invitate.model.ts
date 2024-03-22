@@ -1,4 +1,5 @@
 import { InvitationStatus } from '../enums/invitationStatus.enum';
+import { Notification } from './notification.model';
 import { Room } from './room.model';
 import { User } from './user.model';
 
@@ -12,7 +13,7 @@ export interface RoomInvite {
   recipientId: string;
 }
 
-export interface Invitation {
+export interface Invitation extends Notification {
   id: string;
   sender: User;
   recipient: User;
