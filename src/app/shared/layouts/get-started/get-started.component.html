@@ -1,0 +1,112 @@
+<div class="w-full h-screen font-sans text-gray-900 flex flex-col fixed">
+  <!-- Navbar -->
+  <navbar></navbar>
+
+  <!--  -->
+  <div class="w-full h-full bg-gray-50 text-gray-900 flex flex-col">
+    <section
+      class="flex w-full h-full bg-white shadow-sm border border-green-50 overflow-hidden"
+    >
+      <aside class="py-2 w-48 h-full border-r border-green-100">
+        <div
+          class="flex-col justify-between p-4 overflow-y-auto rounded h-full"
+        >
+          <ul class="space-y-3">
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-md"
+            >
+              <a
+                routerLink="/dg/profile"
+                class="inline-flex px-2 flex items-center p-2 rounded-full"
+              >
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >My Profile</span
+                >
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-md "
+            >
+              <a
+                routerLink="/dg/documents"
+                class="inline-flex px-2 flex items-center p-2 rounded-full"
+              >
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >Documents</span
+                >
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-lg "
+            >
+              <a
+                routerLink="/dg/rooms"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >Rooms</span
+                >
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-300 via-green-300 to-green-300 shadow-lg "
+            >
+              <a
+                routerLink="security"
+                class="inline-flex poppins-regular px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <span
+                  routerLinkActive="text-green-800 poppins-medium"
+                  class="poppins-regular text-gray-800 hover:text-green-600"
+                  >Security</span
+                >
+              </a>
+            </li>
+
+            <li
+              class="inline-flex px-2 rounded-full"
+              routerLinkActive="bg-gradient-to-r from-green-200 via-green-200 to-green-200 shadow-lg "
+            >
+              <button
+                (click)="logout()"
+                class="flex space-x-4 px-2 flex items-center p-2 text-base rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 text-red-500 hover:text-orange-600"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                  />
+                </svg>
+                <span class="text-red-500">Log Out</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <main class="flex-1 p-6 w-full h-full overflow-y-auto scrollbar">
+        <router-outlet></router-outlet>
+      </main>
+    </section>
+  </div>
+</div>
