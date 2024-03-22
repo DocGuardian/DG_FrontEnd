@@ -7,13 +7,16 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AppState } from '../../store/state/app.state';
+import { Store } from '@ngrx/store';
 import { getToken } from '../../utils/utility';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private _router: Router) {}
+export class AlreadyAuthGuard implements CanActivate {
+  
+  constructor(private _router: Router, private _store: Store<AppState>) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,11 +27,14 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     let token = getToken();
-    if (token != null) {
-      return true;
-    } else {
-      this._router.navigate(['auth/register']);
+    if (token) {
+      if (window.history.length > 2) {
+        window.history.back();
+      }
+      this._router.navigateByUrl('/dg/profile');
       return false;
+    } else {
+      return true;
     }
   }
 }

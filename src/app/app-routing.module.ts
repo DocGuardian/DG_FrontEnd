@@ -9,11 +9,15 @@ import { GetStartedComponent } from './shared/layouts/get-started/get-started.co
 import { DocumentsComponent } from './core/components/user/documents/documents.component';
 import { RoomsComponent } from './core/components/room/rooms/rooms.component';
 import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
+import { AlreadyAuthGuard } from './core/guards/user/already-auth.guard';
+import { AuthGuard } from './core/guards/user/auth.guard';
+import { AccountNotActivatedComponent } from './core/components/account/account-not-activated/account-not-activated.component';
+import { AccountVerificationGuard } from './core/guards/user/account-verification.guard';
 
 const routes: Routes = [
   {
     path: 'auth',
-    //canActivate: [NoAuthGuard],
+    canActivate: [AlreadyAuthGuard],
     children: [
       {
         path: 'login',
@@ -27,31 +31,20 @@ const routes: Routes = [
   },
 
   {
-    path: 'account-settings',
-    component: AccountSettingsLayoutComponent,
-    //canActivate: [NoAuthGuard],
-    children: [
-      {
-        path: '',
-        redirectTo: 'profile',
-        pathMatch: 'full',
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-    ],
-  },
-  {
     path: 'home',
     component: HomeComponent,
-    //canActivate: [NoAuthGuard],
+  },
+
+  {
+    path: 'account-not-activated',
+    component: AccountNotActivatedComponent,
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'dg',
     component: GetStartedComponent,
-    //canActivate: [NoAuthGuard],
+    canActivate: [AuthGuard, AccountVerificationGuard],
     children: [
       {
         path: '',

@@ -40,13 +40,12 @@ export class UserService {
 
   public getByEmail(email: string): Observable<HttpResponse> {
     const params = new HttpParams().set('email', email);
-    const token = localStorage.getItem('token') as string;
 
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
 
     return this.http.get<HttpResponse>(`${this.base_url}/search-by`, {
       params,
-      headers
+    
     });
   }
 

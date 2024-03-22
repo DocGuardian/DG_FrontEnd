@@ -23,6 +23,8 @@ export function formatUser(res: HttpResponse) {
 }
 
 
+
+
 export function getToken() {
   return localStorage.getItem('token');
 }

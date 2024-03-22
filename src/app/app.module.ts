@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,8 @@ import { DocsTableComponent } from './shared/docs-table/docs-table.component';
 import { RoomsComponent } from './core/components/room/rooms/rooms.component';
 import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
 import { RoomCardComponent } from './core/components/room/room-card/room-card.component';
+import { TokenInterceptor } from './core/interceptors/jwt/token.interceptor';
+import { AccountNotActivatedComponent } from './core/components/account/account-not-activated/account-not-activated.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { RoomCardComponent } from './core/components/room/room-card/room-card.co
     RoomsComponent,
     RoomDetailsComponent,
     RoomCardComponent,
+    AccountNotActivatedComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +69,11 @@ import { RoomCardComponent } from './core/components/room/room-card/room-card.co
     AppRoutingModule,
   ],
   providers: [
-    // provide: HTTP_INTERCEPTORS,
-    // useClass: JwtInterceptor,
-    // multi: true,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
