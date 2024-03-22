@@ -140,13 +140,13 @@
     #failureOrLoading
     class="text-md font-semibold leading-relaxed text-red-600 md:text-xl"
   >
-    <ng-container *ngIf="errorMsg; else loading">
+    <!-- <ng-container *ngIf="errorMsg; else loading">
       <div
         class="text-md font-semibold leading-relaxed text-red-600 md:text-lg"
       >
         {{ errorMsg }}
       </div>
-    </ng-container>
+    </ng-container> -->
 
     <ng-template #loading> Loading .... </ng-template>
   </ng-template>

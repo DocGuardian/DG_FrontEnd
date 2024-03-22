@@ -1,0 +1,7 @@
+<section class="w-full bg-white rounded overflow-hidden">
+  <notification-card
+    *ngFor="let notification of notifications"
+    [notification]="notification"
+    (deleteClicked)="onDeleteNotification($event)"
+  />
+</section>

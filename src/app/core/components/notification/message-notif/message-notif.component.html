@@ -1,0 +1,9 @@
+<section class="w-full bg-white rounded overflow-hidden">
+  <app-mgs-notif-card
+    *ngFor="let notification of notifications"
+    [notification]="notification"
+  />
+  <div *ngIf="!notifications.length" class="p-4 bg-gray-50">
+    No notifications
+</div>
+</section>

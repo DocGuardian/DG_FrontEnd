@@ -24,18 +24,27 @@ export class UserService {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
 
     return this.http.get<HttpResponse>(this.base_url + '/pages', {
       params,
+      headers,
     });
   }
 
   public getAll(): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(this.base_url);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url, { headers });
   }
 
   public get(id: string): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(this.base_url + `/${id}`);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url + `/${id}`, { headers });
   }
 
   public getByEmail(email: string): Observable<HttpResponse> {
@@ -46,15 +55,34 @@ export class UserService {
 
     return this.http.get<HttpResponse>(`${this.base_url}/search-by`, {
       params,
-      headers
+      headers,
     });
   }
 
   public getInvitations(id: string): Observable<HttpResponse> {
-    return this.http.get<HttpResponse>(this.base_url + `/${id}/invitations`);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url + `/${id}/invitations`, {
+      headers,
+    });
+  }
+
+  public getNotifications(id: string): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.get<HttpResponse>(this.base_url + `/${id}/notifications`, {
+      headers,
+    });
   }
 
   public delete(id: string): Observable<HttpResponse> {
-    return this.http.delete<HttpResponse>(this.base_url + `/${id}`);
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    return this.http.delete<HttpResponse>(this.base_url + `/${id}`, {
+      headers,
+    });
   }
 }

@@ -23,6 +23,8 @@ export class RoomDetailsComponent implements OnInit {
   search_res: string = '';
   isSearching: boolean = false;
   showModal = false;
+  selectedDocument: string = ''; // Replace with actual document URL or data
+
 
   constructor(
     private fb: FormBuilder,
@@ -55,6 +57,14 @@ export class RoomDetailsComponent implements OnInit {
     });
   }
 
+  openDocumentSelection() {
+    // Simulate opening a dialog or modal to select a document (replace with actual implementation)
+    const selectedFile = prompt('Enter document URL or choose a file');
+    if (selectedFile) {
+      this.selectedDocument = selectedFile;
+    }
+  }
+  
   onSearch() {
     this.userService.getByEmail(this.searchUsers.value.email).subscribe({
       next: (res) => {

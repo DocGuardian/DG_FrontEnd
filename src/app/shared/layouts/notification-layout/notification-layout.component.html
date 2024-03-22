@@ -1,0 +1,33 @@
+<navbar></navbar>
+
+<main
+  class="flex flex-col items-center space-y-4 p-4 bg-gray-50 h-screen w-full fixed overflow-y-auto pb-24"
+>
+  <section class="w-full md:w-1/2 p-6 flex flex-wrap gap-4 bg-white rounded">
+    <a
+      routerLink="/notifications/all"
+      routerLinkActive="bg-green-400 text-white"
+      class="inline-block self-center poppins-regular px-5 p-1.5 border border-gray-400 hover:bg-green-400 hover:text-white hover:border-green-400 rounded-full cursor-pointer"
+    >
+      All
+    </a>
+    <a
+      routerLink="/notifications/messages"
+      routerLinkActive="bg-green-400 text-white"
+      class="inline-block self-center poppins-regular px-5 p-1.5 border border-gray-400 hover:bg-green-400 hover:text-white hover:border-green-400 rounded-full cursor-pointer"
+    >
+      Messages
+    </a>
+
+    <a
+      routerLink="/notifications/invitations"
+      routerLinkActive="bg-green-400 text-white"
+      class="inline-block self-center poppins-regular px-5 p-1.5 border border-gray-400 hover:bg-green-400 hover:text-white hover:border-green-400 rounded-full cursor-pointer"
+    >
+      Invitations
+    </a>
+  </section>
+  <section class="w-full md:w-1/2  bg-white rounded">
+    <router-outlet></router-outlet>
+  </section>
+</main>

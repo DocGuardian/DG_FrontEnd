@@ -43,6 +43,27 @@ export class RoomService {
     });
   }
 
+  public getPaginitaionByUser(
+    page: number,
+    size: number,
+    userId: string
+  ): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<HttpResponse>(
+      this.base_url + `/users/${userId}/pages`,
+      {
+        params,
+        headers,
+      }
+    );
+  }
+
   public getAll(): Observable<HttpResponse> {
     const token = localStorage.getItem('token') as string;
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
@@ -101,6 +122,22 @@ export class RoomService {
     return this.http.post<HttpResponse>(
       this.base_url + `/${roomId}/invite`,
       roomInv,
+      { headers }
+    );
+  }
+
+  public joinUser(userId: string, roomId: string): Observable<HttpResponse> {
+    const token = localStorage.getItem('token') as string;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    let joinUserReq = {
+      userId: userId,
+      roomId: roomId,
+    };
+
+    return this.http.post<HttpResponse>(
+      this.base_url + `/join-user`,
+      joinUserReq,
       { headers }
     );
   }
