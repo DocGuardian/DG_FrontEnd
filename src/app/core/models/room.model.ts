@@ -1,4 +1,4 @@
-import { RoomType } from '../enums/room-types.enum';
+import { RoomRoles } from '../enums/room-types.enum';
 import { User } from './user.model';
 
 export interface Room {
@@ -6,16 +6,25 @@ export interface Room {
   owner: User;
   name: string;
   storage: number;
-  type: RoomType;
   users: Array<User>;
   createdAt: Date;
   updatedAt: Date;
 }
 
+export interface UserRoom {
+  id: RoomUsersId;
+  permission: RoomRoles;
+  createdAt: Date;
+  expiredAt: Date;
+}
+
+export interface RoomUsersId {
+  user_id: string;
+  room_id: string;
+}
 export interface RoomReq {
   owner: User;
   name: string;
-  type: RoomType;
 }
 
 export interface PageRooms {

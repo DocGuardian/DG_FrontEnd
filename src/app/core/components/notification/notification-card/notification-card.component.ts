@@ -17,6 +17,7 @@ export class NotificationCardComponent {
   onJoin() {
     this.roomService
       .joinUser(
+        this.notification.id,
         this.notification.recipient.id,
         this.notification.room?.id as string
       )

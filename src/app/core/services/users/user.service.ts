@@ -45,6 +45,37 @@ export class UserService {
     });
   }
 
+  public getRooms(
+    page: number,
+    size: number,
+    userId: string
+  ): Observable<HttpResponse> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<HttpResponse>(this.base_url + `/${userId}/rooms`, {
+      params,
+    });
+  }
+
+  public getRoomsDocs(
+    page: number,
+    size: number,
+    userId: string
+  ): Observable<HttpResponse> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<HttpResponse>(
+      this.base_url + `/${userId}/rooms-docs`,
+      {
+        params,
+      }
+    );
+  }
+
   public getInvitations(id: string): Observable<HttpResponse> {
     return this.http.get<HttpResponse>(this.base_url + `/${id}/invitations`);
   }

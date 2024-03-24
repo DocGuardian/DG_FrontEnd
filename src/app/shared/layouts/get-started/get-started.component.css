@@ -116,7 +116,7 @@
    
   /* Modern Browsers */
 .scrollbar::-webkit-scrollbar {
-    width: 8px; /* Adjust width as desired */
+    width: 5px; /* Adjust width as desired */
   }
   
   .scrollbar::-webkit-scrollbar-thumb {

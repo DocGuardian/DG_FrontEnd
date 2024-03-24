@@ -15,7 +15,7 @@ import { AppState } from 'src/app/core/store/state/app.state';
 })
 export class NavbarComponent implements OnInit {
   user?: User;
-  notifications!: Array<Notification>;
+  notifications?: Array<Notification>;
   errorMsg = '';
 
   constructor(

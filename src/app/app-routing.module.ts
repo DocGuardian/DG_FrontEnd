@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path: 'dg',
     component: GetStartedComponent,
-    canActivate: [AuthGuard, AccountVerificationGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -77,7 +77,7 @@ const routes: Routes = [
   {
     path: 'notifications',
     component: NotificationLayoutComponent,
-    //canActivate: [NoAuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

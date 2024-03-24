@@ -38,6 +38,7 @@ import { InvitationsNotifComponent } from './core/components/notification/invita
 import { InvsNotifCardComponent } from './core/components/notification/invs-notif-card/invs-notif-card.component';
 import { MgsNotifCardComponent } from './core/components/notification/mgs-notif-card/mgs-notif-card.component';
 import { MessageNotifComponent } from './core/components/notification/message-notif/message-notif.component';
+import { UserDocComponent } from './core/components/user/user-doc/user-doc.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MessageNotifComponent } from './core/components/notification/message-no
     InvsNotifCardComponent,
     MgsNotifCardComponent,
     MessageNotifComponent,
+    UserDocComponent,
   ],
   imports: [
     BrowserModule,

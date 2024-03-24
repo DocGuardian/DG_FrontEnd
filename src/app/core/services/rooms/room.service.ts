@@ -17,74 +17,37 @@ export class RoomService {
   constructor(private http: HttpClient) {}
 
   public save(room: RoomReq): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-    return this.http.post<HttpResponse>(this.base_url, room, { headers });
+    return this.http.post<HttpResponse>(this.base_url, room);
   }
 
   public update(room: Room): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
     return this.http.put<HttpResponse>(this.base_url + `/${room.id}`, room);
   }
 
   public getPaginitaion(page: number, size: number): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
     const params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
 
     return this.http.get<HttpResponse>(this.base_url + '/pages', {
       params,
-      headers,
     });
-  }
-
-  public getPaginitaionByUser(
-    page: number,
-    size: number,
-    userId: string
-  ): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
-    const params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString());
-
-    return this.http.get<HttpResponse>(
-      this.base_url + `/users/${userId}/pages`,
-      {
-        params,
-        headers,
-      }
-    );
   }
 
   public getAll(): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.get<HttpResponse>(this.base_url);
+  }
 
-    return this.http.get<HttpResponse>(this.base_url, { headers });
+  public getAllDocs(id: string): Observable<HttpResponse> {
+    return this.http.get<HttpResponse>(this.base_url + `/${id}/docs`);
   }
 
   public get(id: string): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
-    return this.http.get<HttpResponse>(this.base_url + `/${id}`, { headers });
+    return this.http.get<HttpResponse>(this.base_url + `/${id}`);
   }
 
   public delete(id: string): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
-    return this.http.delete<HttpResponse>(this.base_url + `/${id}`, {
-      headers,
-    });
+    return this.http.delete<HttpResponse>(this.base_url + `/${id}`);
   }
 
   public inviteUserByEmail(
@@ -96,13 +59,9 @@ export class RoomService {
       userId: userId,
       email: email,
     };
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
     return this.http.post<HttpResponse>(
       this.base_url + `/${roomId}/invite-by-email`,
-      roomInvByEmail,
-      { headers }
+      roomInvByEmail
     );
   }
 
@@ -111,9 +70,6 @@ export class RoomService {
     recipientId: string,
     roomId: string
   ): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
     let roomInv: RoomInvite = {
       senderId: senderId,
       recipientId: recipientId,
@@ -121,24 +77,45 @@ export class RoomService {
 
     return this.http.post<HttpResponse>(
       this.base_url + `/${roomId}/invite`,
-      roomInv,
-      { headers }
+      roomInv
     );
   }
 
-  public joinUser(userId: string, roomId: string): Observable<HttpResponse> {
-    const token = localStorage.getItem('token') as string;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
+  public joinUser(
+    notifId: string,
+    userId: string,
+    roomId: string
+  ): Observable<HttpResponse> {
     let joinUserReq = {
+      notifId: notifId,
       userId: userId,
       roomId: roomId,
     };
 
     return this.http.post<HttpResponse>(
       this.base_url + `/join-user`,
-      joinUserReq,
-      { headers }
+      joinUserReq
+    );
+  }
+
+  public userPermission(
+    userId: string,
+    roomId: string
+  ): Observable<HttpResponse> {
+    return this.http.post<HttpResponse>(
+      this.base_url + `/${roomId}/user-permission/${userId}`,
+      {}
+    );
+  }
+
+  
+  public removeUser(
+    userId: string,
+    roomId: string
+  ): Observable<HttpResponse> {
+    return this.http.post<HttpResponse>(
+      this.base_url + `/${roomId}/leave/${userId}`,
+      {}
     );
   }
 }

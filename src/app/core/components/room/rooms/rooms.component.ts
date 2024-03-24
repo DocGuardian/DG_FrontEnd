@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { throwError } from 'rxjs';
-import { RoomType } from 'src/app/core/enums/room-types.enum';
 import { PageRooms, RoomReq } from 'src/app/core/models/room.model';
 import { User } from 'src/app/core/models/user.model';
 import { RoomService } from 'src/app/core/services/rooms/room.service';
+import { UserService } from 'src/app/core/services/users/user.service';
 import { AppState } from 'src/app/core/store/state/app.state';
 
 @Component({
@@ -27,6 +27,7 @@ export class RoomsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: RoomService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<AppState>
@@ -55,7 +56,7 @@ export class RoomsComponent implements OnInit {
   }
 
   getRoomPages(page: number, size: number, userId: string) {
-    this.service.getPaginitaionByUser(page, size, userId).subscribe({
+    this.userService.getRooms(page, size, userId).subscribe({
       next: (res) => {
         this.rooms = res.data.response;
         console.info(' Room Pages : ', this.rooms);
@@ -84,7 +85,6 @@ export class RoomsComponent implements OnInit {
   onCreate() {
     let room: RoomReq = {
       name: this.roomForm.value.name,
-      type: RoomType.FREEMIUM,
       owner: this.user as User,
     };
 
