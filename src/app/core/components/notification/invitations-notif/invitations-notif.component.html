@@ -2,5 +2,6 @@
   <app-invs-notif-card
     *ngFor="let notification of notifications"
     [notification]="notification"
+    (deleteClicked)="onDeleteNotification($event)"
   />
 </section>

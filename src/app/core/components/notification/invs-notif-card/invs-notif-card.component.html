@@ -26,16 +26,18 @@
       </div>
     </div>
     <div class="w-full flex flex-wrap space-x-3 justify-end p-4">
-      <a
+      <div
+        (click)="onJoin()"
         class="inline-block bg-green-400 text-white self-center poppins-regular px-5 p-1.5 border border-green-400 rounded-full cursor-pointer"
       >
         Join
-      </a>
-      <a
+      </div>
+      <div
+        (click)="onDeny()"
         class="inline-block self-center bg-red-500 text-white poppins-regular px-4 p-1.5 rounded-full cursor-pointer"
       >
         Deny
-      </a>
+      </div>
     </div>
   </div>
 </section>

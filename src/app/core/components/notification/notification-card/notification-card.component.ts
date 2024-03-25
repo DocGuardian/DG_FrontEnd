@@ -23,9 +23,9 @@ export class NotificationCardComponent {
       )
       .subscribe({
         next: (res) => {
-          alert('Join : ' + JSON.stringify(res.data.response));
-          this.route.navigateByUrl('dg/rooms/' + this.notification.room?.id);
           this.onDeny();
+          this.route.navigateByUrl('dg/rooms/' + this.notification.room?.id);
+        
         },
         error: (err) => {
           console.log('Join User Err ', err.message);

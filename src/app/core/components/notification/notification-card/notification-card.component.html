@@ -25,19 +25,22 @@
         </p>
       </div>
     </div>
-    <div class="w-full flex flex-wrap space-x-3 justify-end p-4">
+    <div
+      *ngIf="!notification.read"
+      class="w-full flex flex-wrap space-x-3 justify-end p-4"
+    >
       <div
-      (click)="onJoin()"
+        (click)="onJoin()"
         class="inline-block bg-green-400 text-white self-center poppins-regular px-5 p-1.5 border border-green-400 rounded-full cursor-pointer"
       >
         Join
-    </div>
+      </div>
       <div
-      (click)="onDeny()"
+        (click)="onDeny()"
         class="inline-block self-center bg-red-500 text-white poppins-regular px-4 p-1.5 rounded-full cursor-pointer"
       >
         Deny
-  </div>
+      </div>
     </div>
   </div>
 

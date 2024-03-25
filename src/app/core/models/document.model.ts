@@ -11,7 +11,6 @@ export interface Document {
   size: number;
   type: string;
   createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface DocReq {

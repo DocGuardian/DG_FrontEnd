@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { debounceTime, filter, throwError } from 'rxjs';
+import { debounceTime, filter, throwError, window } from 'rxjs';
 import { DocReq, Document } from 'src/app/core/models/document.model';
 import { HttpResponse } from 'src/app/core/models/httpRes.model';
 import { Room, UserRoom } from 'src/app/core/models/room.model';
@@ -117,10 +117,23 @@ export class RoomDetailsComponent implements OnInit {
       type: this.documentForm.value.docUrl.type,
     };
 
+    let insertedDoc: Document = {
+      id: 'test',
+      sender: this.sender as User,
+      room: this.room,
+      name: this.documentForm.value.docUrl.name,
+      docUrl: this.documentForm.value.docUrl,
+      size: this.documentForm.value.docUrl.size,
+      type: this.documentForm.value.docUrl.type,
+      createdAt: new Date(),
+    };
+
+    this.docs.push(insertedDoc);
+
     this.docService.save(doc).subscribe({
       next: (res: HttpResponse) => {
-        alert('Action made successfully!');
-        alert(JSON.stringify(res.data.response));
+        let docIndex = this.docs.findIndex((d) => d.name === insertedDoc.name);
+        this.docs[docIndex] = res.data.response;
       },
       error: (err: HttpResponse) => {
         console.error(err.message);

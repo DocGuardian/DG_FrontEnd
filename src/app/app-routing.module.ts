@@ -15,7 +15,6 @@ import { AccountVerificationGuard } from './core/guards/user/account-verificatio
 import { NotificationsComponent } from './core/components/notification/notifications/notifications.component';
 import { NotificationLayoutComponent } from './shared/layouts/notification-layout/notification-layout.component';
 import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
-import { MessageNotifComponent } from './core/components/notification/message-notif/message-notif.component';
 
 const routes: Routes = [
   {
@@ -88,10 +87,7 @@ const routes: Routes = [
         path: 'all',
         component: NotificationsComponent,
       },
-      {
-        path: 'messages',
-        component: MessageNotifComponent,
-      },
+
       {
         path: 'invitations',
         component: InvitationsNotifComponent,
