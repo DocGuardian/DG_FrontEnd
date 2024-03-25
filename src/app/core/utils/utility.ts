@@ -1,7 +1,6 @@
 import { HttpResponse } from '../models/httpRes.model';
 import { User } from '../models/user.model';
 
-
 export function formatUser(res: HttpResponse) {
   let userRes = res.data.response;
   const user: User = {
@@ -22,9 +21,10 @@ export function formatUser(res: HttpResponse) {
   return user;
 }
 
-
-
-
 export function getToken() {
   return localStorage.getItem('token');
+}
+
+export function getRole() {
+  return localStorage.getItem('role');
 }

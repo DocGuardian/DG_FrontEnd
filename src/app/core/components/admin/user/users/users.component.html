@@ -1,0 +1,40 @@
+<main class="flex flex-col scrollbar gap-y-5 pb-16">
+  <div class="flex flex-col sm:flex-row justify-between items-center">
+    <p class="poppins-medium text-xl">All Users</p>
+  </div>
+
+  <!-- <app-users-table [users]="users.content"></app-users-table> -->
+
+  <div class="px-4 overflow-hidden rounded shadow-xs h-full">
+    <div class="overflow-auto scrollbar rounded">
+      <table class="w-full">
+        <thead>
+          <tr class="poppins-regular text-left text-sm text-gray-500 border-b">
+            <th class="p-4">First Name</th>
+            <th class="p-4">Last Name</th>
+            <th class="p-4">email</th>
+            <th class="p-4">Phone</th>
+            <th class="p-4">Created At</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let user of users.content" class="poppins-regular">
+            <td class="px-4 py-3 text-sm poppins-medium text-green-500">
+              {{ user.first_name }}
+            </td>
+            <td class="px-4 py-3 text-sm poppins-medium text-green-500">
+              {{ user.last_name }}
+            </td>
+            <td class="px-4 py-3 text-sm poppins-medium">
+              {{ user.email }}
+            </td>
+            <td class="px-4 py-3 text-sm poppins-medium">
+              {{ user.phone }}
+            </td>
+            <td class="px-4 py-3 text-sm">{{ user.createdAt | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

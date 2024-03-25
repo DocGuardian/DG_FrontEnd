@@ -1,5 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { User, UserReq } from '../../models/user.model';
+import { Role } from '../../enums/roles.enum';
+
+export const ADMIN_LOGIN_START = '[auth/user] ADMIN login start';
 
 export const USER_LOGIN_START = '[auth/user] USER login start';
 export const USER_LOGIN_SUCCESS = '[auth/user] USER login success';
@@ -16,6 +19,21 @@ export const startLoginAction = createAction(
   USER_LOGIN_START,
   props<{ email: string; password: string }>()
 );
+
+// LOGIN
+
+export const loggedInAsAdminAction = createAction(
+  '[Auth] Logged In As Admin',
+  props<{ user: any }>()
+);
+
+export const userRoleAction = createAction(
+  '[auth/user] User Role',
+  props<{ role: Role }>()
+);
+
+
+
 
 export const extractEmail = createAction(
   '[auth/user] Extract Email',

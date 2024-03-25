@@ -1,0 +1,27 @@
+<div class="px-4 overflow-hidden rounded shadow-xs h-full">
+  <div class="overflow-auto scrollbar rounded">
+    <table class="w-full">
+      <thead>
+        <tr class="poppins-regular text-left text-sm text-gray-500 border-b">
+          <th class="p-4">Name</th>
+          <th class="p-4">Owner</th>
+          <th class="p-4">Participants</th>
+          <th class="p-4">Created At</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr *ngFor="let room of rooms" class="poppins-regular">
+          <td class="px-4 py-3 text-sm poppins-medium text-green-500">
+            {{ room.name }}
+          </td>
+          <td class="px-4 py-3 text-sm poppins-medium">
+            {{ room.owner.first_name }} {{ room.owner.last_name }}
+          </td>
+
+          <td class="px-4 py-3 text-sm">{{ room.users.length }}</td>
+          <td class="px-4 py-3 text-sm">{{ room.createdAt | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import {
   extractEmail,
   extractEmailFailure,
+  loggedInAsAdminAction,
   loginSuccessAction,
   logoutAction,
   registerSuccessAction,
@@ -17,6 +18,7 @@ import { UserService } from '../../services/users/user.service';
 import { UserAuthService } from '../../services/users/auth/user-auth.service';
 import { formatUser } from '../../utils/utility';
 import { jwtDecode } from 'jwt-decode';
+import { Role } from '../../enums/roles.enum';
 
 @Injectable()
 export class UserEffect {
@@ -37,6 +39,8 @@ export class UserEffect {
         return this.userService.getByEmail(email).pipe(
           map((res) => {
             const user = formatUser(res);
+            localStorage.setItem('role', user.role);
+            this.route.navigate(['dg/admin/profile']);
             return loginSuccessAction({ user });
           }),
           catchError((error) => {
@@ -47,6 +51,7 @@ export class UserEffect {
       })
     )
   );
+
 
   login$ = createEffect(() =>
     this.actions$.pipe(
@@ -62,7 +67,7 @@ export class UserEffect {
             const token = res.data.token;
             localStorage.setItem('token', token);
             console.log('Token : ', token);
-            this.route.navigate(['dg/profile']);
+            // this.route.navigate(['dg/profile']);
             return extractEmail({ token });
           })
         );

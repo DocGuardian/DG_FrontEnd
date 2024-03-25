@@ -27,6 +27,8 @@ import { ProjectsComponent } from './core/components/user/projects/projects.comp
 import { FooterComponent } from './shared/footer/footer.component';
 import { DocsTableComponent } from './shared/docs-table/docs-table.component';
 import { RoomsComponent } from './core/components/room/rooms/rooms.component';
+import { RoomsComponent as AdminRooms } from './core/components/admin/room/rooms/rooms.component';
+
 import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
 import { RoomCardComponent } from './core/components/room/room-card/room-card.component';
 import { TokenInterceptor } from './core/interceptors/jwt/token.interceptor';
@@ -37,6 +39,10 @@ import { NotificationLayoutComponent } from './shared/layouts/notification-layou
 import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
 import { InvsNotifCardComponent } from './core/components/notification/invs-notif-card/invs-notif-card.component';
 import { UserDocComponent } from './core/components/user/user-doc/user-doc.component';
+import { AuthComponent } from './core/components/admin/auth/auth.component';
+import { UsersComponent } from './core/components/admin/user/users/users.component';
+import { RoomsTableComponent } from './core/components/admin/room/rooms-table/rooms-table.component';
+import { UsersTableComponent } from './core/components/admin/user/users-table/users-table.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +77,12 @@ import { UserDocComponent } from './core/components/user/user-doc/user-doc.compo
     InvitationsNotifComponent,
     InvsNotifCardComponent,
 
+    AdminRooms,
+    RoomsTableComponent,
     UserDocComponent,
+    AuthComponent,
+    UsersComponent,
+    UsersTableComponent,
   ],
   imports: [
     BrowserModule,

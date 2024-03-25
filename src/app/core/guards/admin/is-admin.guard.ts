@@ -7,35 +7,34 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { getToken } from '../../utils/utility';
 import { AppState } from '../../store/state/app.state';
 import { Store } from '@ngrx/store';
 import { User } from '../../models/user.model';
+import { Role } from '../../enums/roles.enum';
+import { getRole, getToken } from '../../utils/utility';
 import { extractEmail } from '../../store/users/user.action';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class IsAdminGuard implements CanActivate {
   user?: User;
-  constructor(private _router: Router, private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private _router: Router) {}
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  ): Promise<boolean | UrlTree> {
     let token = getToken();
-    let role = getToken();
-
-    if (token != null) {
-      return true;
-    } else {
-      this._router.navigate(['auth/register']);
-      return false;
+    let role = getRole();
+    if (role != null) {
+    
+      if (this.user?.role === Role.ADMIN) {
+        return true;
+      }
     }
+    window.history.back();
+
+    return false;
   }
 }

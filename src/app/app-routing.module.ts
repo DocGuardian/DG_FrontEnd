@@ -7,6 +7,8 @@ import { ProfileComponent } from './core/components/user/profile/profile.compone
 import { GetStartedComponent } from './shared/layouts/get-started/get-started.component';
 import { DocumentsComponent } from './core/components/user/documents/documents.component';
 import { RoomsComponent } from './core/components/room/rooms/rooms.component';
+import { RoomsComponent as Rm } from './core/components/admin/room/rooms/rooms.component';
+
 import { RoomDetailsComponent } from './core/components/room/room-details/room-details.component';
 import { AlreadyAuthGuard } from './core/guards/user/already-auth.guard';
 import { AuthGuard } from './core/guards/user/auth.guard';
@@ -15,6 +17,10 @@ import { AccountVerificationGuard } from './core/guards/user/account-verificatio
 import { NotificationsComponent } from './core/components/notification/notifications/notifications.component';
 import { NotificationLayoutComponent } from './shared/layouts/notification-layout/notification-layout.component';
 import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
+import { AdminLayoutComponent } from './shared/layouts/admin-layout/admin-layout.component';
+import { AuthComponent } from './core/components/admin/auth/auth.component';
+import { IsAdminGuard } from './core/guards/admin/is-admin.guard';
+import { UsersComponent } from './core/components/admin/user/users/users.component';
 
 const routes: Routes = [
   {
@@ -28,6 +34,41 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
+      },
+    ],
+  },
+
+  {
+    path: 'admin/auth',
+    component: AuthComponent,
+    // canActivate: [AlreadyAuthGuard],
+  },
+
+  {
+    path: 'dg/admin',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'profile',
+        pathMatch: 'full',
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'documents',
+        component: DocumentsComponent,
+      },
+      {
+        path: 'rooms',
+        component: Rm,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
       },
     ],
   },
