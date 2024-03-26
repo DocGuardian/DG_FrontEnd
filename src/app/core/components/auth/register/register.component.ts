@@ -15,12 +15,12 @@ export class RegisterComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  first_name_Error: any;
-  last_name_Error: any;
-  email_Error: any;
-  phone_Error: any;
-  password_Error: any;
-  confirm_pass_Error: any;
+  first_name_Error = '';
+  last_name_Error = '';
+  email_Error = '';
+  phone_Error = '';
+  password_Error = '';
+  confirm_pass_Error = '';
 
   ngOnInit(): void {
     this.signUpForm = this.builder.group({
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(3),
           Validators.maxLength(30),
         ])
       ),
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(3),
           Validators.maxLength(30),
         ])
       ),
@@ -62,11 +62,7 @@ export class RegisterComponent implements OnInit {
       ),
       confirmPassword: this.builder.control(
         '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(20),
-        ])
+        Validators.compose([Validators.required])
       ),
     });
   }
@@ -88,77 +84,73 @@ export class RegisterComponent implements OnInit {
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }
-    }
-
-    // Handle First name
-    if (this.signUpForm?.get('first_name')?.hasError('required')) {
-      this.first_name_Error = 'First name is required.';
-    } else if (this.signUpForm?.get('first_name')?.hasError('minlength')) {
-      this.first_name_Error = 'First name must be at least 8 characters long.';
-    } else if (this.signUpForm?.get('first_name')?.hasError('maxlength')) {
-      this.first_name_Error =
-        'First name must be less than 30 characters long.';
     } else {
-      this.first_name_Error = '';
-    }
+      // Handle First name
+      if (this.signUpForm?.get('first_name')?.hasError('required')) {
+        this.first_name_Error = 'First name is required.';
+      } else if (this.signUpForm?.get('first_name')?.hasError('minlength')) {
+        this.first_name_Error =
+          'First name must be at least 3 characters long.';
+      } else if (this.signUpForm?.get('first_name')?.hasError('maxlength')) {
+        this.first_name_Error =
+          'First name must be less than 20 characters long.';
+      } else {
+        this.first_name_Error = '';
+      }
 
-    // Handle Last name
-    if (this.signUpForm?.get('last_name')?.hasError('required')) {
-      this.last_name_Error = 'Last name is required.';
-    } else if (this.signUpForm?.get('last_name')?.hasError('minlength')) {
-      this.last_name_Error = ' Last name must be at least 8 characters long.';
-    } else if (this.signUpForm?.get('last_name')?.hasError('maxlength')) {
-      this.last_name_Error = 'Last name must be less than 30 characters long.';
-    } else {
-      this.last_name_Error = '';
-    }
+      // Handle Last name
+      if (this.signUpForm?.get('last_name')?.hasError('required')) {
+        this.last_name_Error = 'Last name is required.';
+      } else if (this.signUpForm?.get('last_name')?.hasError('minlength')) {
+        this.last_name_Error = ' Last name must be at least 3 characters long.';
+      } else if (this.signUpForm?.get('last_name')?.hasError('maxlength')) {
+        this.last_name_Error =
+          'Last name must be less than 20 characters long.';
+      } else {
+        this.last_name_Error = '';
+      }
 
-    // Handle Email
-    if (this.signUpForm?.get('email')?.hasError('required')) {
-      this.email_Error = 'Email is required.';
-    } else if (this.signUpForm?.get('email')?.hasError('email')) {
-      this.email_Error = 'This filed must be a valid email.';
-    } else {
-      this.email_Error = '';
-    }
+      // Handle Email
+      if (this.signUpForm?.get('email')?.hasError('required')) {
+        this.email_Error = 'Email is required.';
+      } else if (this.signUpForm?.get('email')?.hasError('email')) {
+        this.email_Error = 'This filed must be a valid email.';
+      } else {
+        this.email_Error = '';
+      }
 
-    // Handle Phone
-    if (this.signUpForm?.get('phone')?.hasError('required')) {
-      this.phone_Error = 'Phone is required.';
-    } else if (this.signUpForm?.get('phone')?.hasError('minlength')) {
-      this.phone_Error = 'Phone must be 10 numbers.';
-    } else if (this.signUpForm?.get('phone')?.hasError('maxlength')) {
-      this.phone_Error = 'Phone must be 10 numbers.';
-    } else {
-      this.phone_Error = '';
-    }
+      // Handle Phone
+      if (this.signUpForm?.get('phone')?.hasError('required')) {
+        this.phone_Error = 'Phone is required.';
+      } else if (this.signUpForm?.get('phone')?.hasError('minlength')) {
+        this.phone_Error = 'Phone must be 10 numbers.';
+      } else if (this.signUpForm?.get('phone')?.hasError('maxlength')) {
+        this.phone_Error = 'Phone must be 10 numbers.';
+      } else {
+        this.phone_Error = '';
+      }
 
-    // Handle Password
-    if (this.signUpForm?.get('password')?.hasError('required')) {
-      this.password_Error = 'Password is required.';
-    } else if (this.signUpForm?.get('password')?.hasError('minlength')) {
-      this.password_Error = 'Password must be at least 8 characters long.';
-    } else if (this.signUpForm?.get('password')?.hasError('maxlength')) {
-      this.password_Error = 'Password must be less than 30 characters long.';
-    } else {
-      this.password_Error = '';
-    }
+      // Handle Password
+      if (this.signUpForm?.get('password')?.hasError('required')) {
+        this.password_Error = 'Password is required.';
+      } else if (this.signUpForm?.get('password')?.hasError('minlength')) {
+        this.password_Error = 'Password must be at least 6 characters long.';
+      } else if (this.signUpForm?.get('password')?.hasError('maxlength')) {
+        this.password_Error = 'Password must be less than 26 characters long.';
+      } else {
+        this.password_Error = '';
+      }
 
-    // Handle Confirm Password
-    if (this.signUpForm?.get('confirmPassword')?.hasError('required')) {
-      this.confirm_pass_Error = 'Confirm Password is required.';
-    } else if (this.signUpForm?.get('confirmPassword')?.hasError('minlength')) {
-      this.confirm_pass_Error =
-        'Confirm Password must be at least 8 characters long.';
-    } else if (this.signUpForm?.get('confirmPassword')?.hasError('maxlength')) {
-      this.confirm_pass_Error =
-        'Confirm Password must be less than 30 characters long.';
-    } else if (
-      this.signUpForm.value.confirmPassword != this.signUpForm.value.password
-    ) {
-      this.confirm_pass_Error = 'Mismatch password.';
-    } else {
-      this.confirm_pass_Error = '';
+      // Handle Confirm Password
+      if (this.signUpForm?.get('confirmPassword')?.hasError('required')) {
+        this.confirm_pass_Error = 'Confirm Password is required.';
+      } else if (
+        this.signUpForm.value.confirmPassword != this.signUpForm.value.password
+      ) {
+        this.confirm_pass_Error = 'Mismatch password.';
+      } else {
+        this.confirm_pass_Error = '';
+      }
     }
   }
 }

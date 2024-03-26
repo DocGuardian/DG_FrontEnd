@@ -27,6 +27,8 @@ export class UserAuthService {
     });
   }
 
+  
+
   public reSendVerification(token: string): Observable<HttpResponse> {
     const params = new HttpParams().set('token', token.toString());
     return this.http.get<HttpResponse>(

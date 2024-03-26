@@ -13,14 +13,13 @@ import { RoomDetailsComponent } from './core/components/room/room-details/room-d
 import { AlreadyAuthGuard } from './core/guards/user/already-auth.guard';
 import { AuthGuard } from './core/guards/user/auth.guard';
 import { AccountNotActivatedComponent } from './core/components/account/account-not-activated/account-not-activated.component';
-import { AccountVerificationGuard } from './core/guards/user/account-verification.guard';
 import { NotificationsComponent } from './core/components/notification/notifications/notifications.component';
 import { NotificationLayoutComponent } from './shared/layouts/notification-layout/notification-layout.component';
 import { InvitationsNotifComponent } from './core/components/notification/invitations-notif/invitations-notif.component';
 import { AdminLayoutComponent } from './shared/layouts/admin-layout/admin-layout.component';
 import { AuthComponent } from './core/components/admin/auth/auth.component';
-import { IsAdminGuard } from './core/guards/admin/is-admin.guard';
 import { UsersComponent } from './core/components/admin/user/users/users.component';
+import { AccountValidationComponent } from './core/components/auth/account-validation/account-validation.component';
 
 const routes: Routes = [
   {
@@ -39,9 +38,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'auth/account-verification/:token',
+    component: AccountValidationComponent,
+  },
+  {
     path: 'admin/auth',
     component: AuthComponent,
-    // canActivate: [AlreadyAuthGuard],
   },
 
   {

@@ -43,6 +43,7 @@ import { AuthComponent } from './core/components/admin/auth/auth.component';
 import { UsersComponent } from './core/components/admin/user/users/users.component';
 import { RoomsTableComponent } from './core/components/admin/room/rooms-table/rooms-table.component';
 import { UsersTableComponent } from './core/components/admin/user/users-table/users-table.component';
+import { AccountValidationComponent } from './core/components/auth/account-validation/account-validation.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { UsersTableComponent } from './core/components/admin/user/users-table/us
     AuthComponent,
     UsersComponent,
     UsersTableComponent,
+    AccountValidationComponent,
   ],
   imports: [
     BrowserModule,

@@ -202,9 +202,12 @@ export class RoomDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log('Res : ' + res);
+          this.toggleRemove();
+          this.router.navigateByUrl('/dg/profile');
         },
         error: (err) => {
           console.log('Err : ' + err.message);
+          this.toggleRemove();
         },
       });
     this.toggleModal();

@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
+  adminLoginAction,
   extractEmail,
   extractEmailFailure,
-  loggedInAsAdminAction,
   loginSuccessAction,
   logoutAction,
   registerSuccessAction,
@@ -40,7 +40,7 @@ export class UserEffect {
           map((res) => {
             const user = formatUser(res);
             localStorage.setItem('role', user.role);
-            this.route.navigate(['dg/admin/profile']);
+
             return loginSuccessAction({ user });
           }),
           catchError((error) => {
@@ -51,7 +51,6 @@ export class UserEffect {
       })
     )
   );
-
 
   login$ = createEffect(() =>
     this.actions$.pipe(
@@ -67,7 +66,29 @@ export class UserEffect {
             const token = res.data.token;
             localStorage.setItem('token', token);
             console.log('Token : ', token);
-            // this.route.navigate(['dg/profile']);
+            this.route.navigate(['dg/profile']);
+            return extractEmail({ token });
+          })
+        );
+      })
+    )
+  );
+
+  adminLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(adminLoginAction),
+      switchMap((action) => {
+        let authReq = {
+          email: action.email,
+          password: action.password,
+        };
+
+        return this.userAuthService.login(authReq).pipe(
+          map((res) => {
+            const token = res.data.token;
+            localStorage.setItem('token', token);
+            console.log('Token : ', token);
+            this.route.navigate(['dg/admin/profile']);
             return extractEmail({ token });
           })
         );
